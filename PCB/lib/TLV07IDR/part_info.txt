@@ -1,0 +1,9 @@
+Manufacturer=Texas Instruments
+PartNumber=TLV07IDR
+PartCategory=Integrated Circuit
+PackageCategory=Small Outline Packages
+PinCount=8
+Version=2.1
+Released=2019-08-06 07:42:45
+Downloaded=2023-04-19 19:21:59
+3D=Y

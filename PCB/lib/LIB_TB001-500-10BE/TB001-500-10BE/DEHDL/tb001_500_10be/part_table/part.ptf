@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'TB001_500_10BE'
+CLASS = IO
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "CUI Devices", "TB001-500-10BE" (!) = "", "SHDR10W100P0X500_1X10_5000X900X1250P", "Header, Shrouded - Straight PTH Box", "490-TB001-500-10BE", "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB001-500-10BE?qs=vLWxofP3U2zH1ZAwWBP5mg%3D%3D", "Fixed Terminal Blocks", "https://componentsearchengine.com/Datasheets/1/TB001-500-10BE.pdf", "12.5 mm"
+END_PART
+
+END.

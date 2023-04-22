@@ -1,0 +1,9 @@
+Manufacturer=Texas Instruments
+PartNumber=OP-07DPS
+PartCategory=Integrated Circuit
+PackageCategory=Small Outline Packages
+PinCount=8
+Version=1.1
+Released=2021-12-28 06:04:52
+Downloaded=2023-04-12 14:25:42
+3D=Y

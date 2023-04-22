@@ -1,0 +1,9 @@
+Manufacturer=Texas Instruments
+PartNumber=TXS0102DCUTG4
+PartCategory=Integrated Circuit
+PackageCategory=Small Outline Packages
+PinCount=8
+Version=1.1
+Released=2021-12-16 07:15:10
+Downloaded=2023-04-11 12:46:34
+3D=Y
