@@ -2856,7 +2856,7 @@
     (property "Value" "TXS0102DCUTG4" (at 212.09 139.065 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "SOP50P310X90-8N" (at 222.25 237.795 0)
+    (property "Footprint" "TXS0102DCUTG4:SOP50P310X90-8N" (at 222.25 237.795 0)
       (effects (font (size 1.27 1.27)) (justify left top) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/gpn/TXS0102" (at 222.25 337.795 0)
