@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'TXS0102DCUTG4'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Texas Instruments", "TXS0102DCUTG4" (!) = "", "SOP50P310X90-8N", "Small Outline Packages", "595-TXS0102DCUTG4", "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TXS0102DCUTG4?qs=0OHPnBYoB%2FliJ1RXxm0IJQ%3D%3D", "2-Bit Bidirectional Voltage-Level Shifter for Open-Drain and Push-Pull Application", "http://www.ti.com/lit/gpn/TXS0102", "0.9 mm"
+END_PART
+
+END.

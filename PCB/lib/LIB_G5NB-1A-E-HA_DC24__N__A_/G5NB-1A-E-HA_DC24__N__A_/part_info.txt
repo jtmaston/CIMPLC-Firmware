@@ -1,0 +1,9 @@
+Manufacturer=Omron Electronics
+PartNumber=G5NB-1A-E-HA DC24 (N)(A)
+PartCategory=Relay or Contactor
+PackageCategory=Other
+PinCount=4
+Version=1.2
+Released=2019-02-26 17:58:43
+Downloaded=2023-04-08 19:14:36
+3D=Y

@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'TLP172AM_TPR_E'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Toshiba", "TLP172AM(TPR,E" (!) = "", "SOIC127P700X230-6N", "Small Outline Packages", "757-TLP172AMTPRE", "https://www.mouser.co.uk/ProductDetail/Toshiba/TLP172AMTPRE?qs=6ZHl3BmPMW1g8abCQD%2F8ag%3D%3D", "MOSFET Output Optocouplers Photorelay 1-Form-A VOFF=60V 0.5A 2Ohm", "https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM", "2.3 mm"
+END_PART
+
+END.

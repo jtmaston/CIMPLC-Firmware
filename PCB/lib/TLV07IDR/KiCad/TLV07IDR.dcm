@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TLV07IDR
+D 36-V Precision, Rail-to-Rail Output, Operational Amplifier
+K
+F http://www.ti.com/lit/gpn/tlv07
+$ENDCMP
+#
+#End Doc Library

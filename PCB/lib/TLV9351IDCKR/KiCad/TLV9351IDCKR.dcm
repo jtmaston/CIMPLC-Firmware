@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TLV9351IDCKR
+D Operational Amplifiers - Op Amps 40-V, single 3.5-MHz, RRO, MUX-friendly operational amplifier for cost-sensitive systems 5-SC70 -40 to 125
+K
+F https://www.ti.com/lit/gpn/TLV9351
+$ENDCMP
+#
+#End Doc Library

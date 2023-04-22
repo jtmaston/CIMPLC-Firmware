@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP OP-07DPS
+D Operational Amplifiers - Op Amps Low-Offset voltage (0.15mV) single operational amplifier 8-SO 0 to 70
+K
+F https://www.ti.com/lit/ds/symlink/op07c.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1640609008089&ref_url=http%253A%252F%252Fcomponentsearchengine.com%252F
+$ENDCMP
+#
+#End Doc Library

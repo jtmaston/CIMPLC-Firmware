@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'TLV9351IDCKR'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Texas Instruments", "TLV9351IDCKR" (!) = "", "SOT65P210X110-5N", "SOT23 (5-Pin)", "595-TLV9351IDCKR", "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TLV9351IDCKR?qs=DRkmTr78QAQETvxeOeABCA%3D%3D", "Operational Amplifiers - Op Amps 40-V, single 3.5-MHz, RRO, MUX-friendly operational amplifier for cost-sensitive systems 5-SC70 -40 to 125", "https://www.ti.com/lit/gpn/TLV9351", "1.1 mm"
+END_PART
+
+END.

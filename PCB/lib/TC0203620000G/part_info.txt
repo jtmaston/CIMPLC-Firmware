@@ -1,0 +1,9 @@
+Manufacturer=Amphenol
+PartNumber=TC0203620000G
+PartCategory=Connector
+PackageCategory=Other
+PinCount=2
+Version=1.2
+Released=2020-06-24 12:54:07
+Downloaded=2023-04-11 12:55:20
+3D=Y
