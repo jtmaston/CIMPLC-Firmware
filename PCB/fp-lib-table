@@ -1,0 +1,12 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "TXS0102DCUTG4")(type "KiCad")(uri "${KIPRJMOD}/lib/TXS0102DCUTG4")(options "")(descr ""))
+  (lib (name "TLV9351IDCKR")(type "KiCad")(uri "${KIPRJMOD}/lib/TLV9351IDCKR")(options "")(descr ""))
+  (lib (name "TLV07IDR")(type "KiCad")(uri "${KIPRJMOD}/lib/TLV07IDR")(options "")(descr ""))
+  (lib (name "TC0203620000G")(type "KiCad")(uri "${KIPRJMOD}/lib/TC0203620000G")(options "")(descr ""))
+  (lib (name "OP-07DPS")(type "KiCad")(uri "${KIPRJMOD}/lib/OP-07DPS")(options "")(descr ""))
+  (lib (name "LIB_TLP172AM_TPR,E")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_TLP172AM_TPR,E")(options "")(descr ""))
+  (lib (name "LIB_TB001-500-10BE")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_TB001-500-10BE")(options "")(descr ""))
+  (lib (name "LIB_G5NB-1A-E-HA_DC24__N__A_")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_G5NB-1A-E-HA_DC24__N__A_")(options "")(descr ""))
+  (lib (name "LIB_CP1-12V")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_CP1-12V")(options "")(descr ""))
+)

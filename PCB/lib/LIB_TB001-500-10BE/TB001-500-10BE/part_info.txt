@@ -1,9 +1,0 @@
-Manufacturer=CUI Devices
-PartNumber=TB001-500-10BE
-PartCategory=Connector
-PackageCategory=Header, Shrouded - Straight PTH Box
-PinCount=10
-Version=2.1
-Released=2020-02-04 11:32:08
-Downloaded=2023-04-08 22:50:43
-3D=Y

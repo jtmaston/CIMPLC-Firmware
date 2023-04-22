@@ -1,0 +1,12 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "TXS0102DCUTG4")(type "KiCad")(uri "${KIPRJMOD}/lib/TXS0102DCUTG4/TXS0102DCUTG4.kicad_sym")(options "")(descr ""))
+  (lib (name "TLV9351IDCKR")(type "KiCad")(uri "${KIPRJMOD}/lib/TLV9351IDCKR/TLV9351IDCKR.kicad_sym")(options "")(descr ""))
+  (lib (name "TLV07IDR")(type "KiCad")(uri "${KIPRJMOD}/lib/TLV07IDR/TLV07IDR.kicad_sym")(options "")(descr ""))
+  (lib (name "TC0203620000G")(type "KiCad")(uri "${KIPRJMOD}/lib/TC0203620000G/TC0203620000G.kicad_sym")(options "")(descr ""))
+  (lib (name "OP-07DPS")(type "KiCad")(uri "${KIPRJMOD}/lib/OP-07DPS/OP-07DPS.kicad_sym")(options "")(descr ""))
+  (lib (name "TLP172AM_TPR_E")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_TLP172AM_TPR,E/TLP172AM_TPR_E.kicad_sym")(options "")(descr ""))
+  (lib (name "TB001-500-10BE")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_TB001-500-10BE/TB001-500-10BE.kicad_sym")(options "")(descr ""))
+  (lib (name "G5NB-1A-E-HA_DC24__N__A_")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_G5NB-1A-E-HA_DC24__N__A_/G5NB-1A-E-HA_DC24__N__A_.kicad_sym")(options "")(descr ""))
+  (lib (name "CP1-12V")(type "KiCad")(uri "${KIPRJMOD}/lib/LIB_CP1-12V/CP1-12V.kicad_sym")(options "")(descr ""))
+)

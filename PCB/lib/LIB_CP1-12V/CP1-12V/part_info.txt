@@ -1,9 +1,0 @@
-Manufacturer=Panasonic
-PartNumber=CP1-12V
-PartCategory=Relay or Contactor
-PackageCategory=Other
-PinCount=5
-Version=2.4
-Released=2017-11-02 09:36:54
-Downloaded=2023-04-08 18:38:56
-3D=Y
