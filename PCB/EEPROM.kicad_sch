@@ -272,7 +272,7 @@
     (property "Value" "AT24CM02-SSHM-B" (at 154.94 93.98 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "SOIC127P600X175-8N" (at 165.1 193.345 0)
+    (property "Footprint" "AT24CM02-SSHM-B:SOIC127P600X175-8N" (at 165.1 193.345 0)
       (effects (font (size 1.27 1.27)) (justify left top) hide)
     )
     (property "Datasheet" "https://www.mouser.co.id/datasheet/2/268/Atmel-8828-SEEPROM-AT24CM02-Datasheet-1398087.pdf" (at 165.1 293.345 0)
