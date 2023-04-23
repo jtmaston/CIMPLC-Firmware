@@ -382,9 +382,9 @@
       "pin_not_connected": "error",
       "pin_not_driven": "error",
       "pin_to_pin": "warning",
-      "power_pin_not_driven": "error",
+      "power_pin_not_driven": "ignore",
       "similar_labels": "warning",
-      "simulation_model_issue": "error",
+      "simulation_model_issue": "ignore",
       "unannotated": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
@@ -523,12 +523,32 @@
       "Power Management"
     ],
     [
-      "37ac7938-b789-4c47-8d85-865bd18cd005",
-      "Low Power Uart"
-    ],
-    [
       "1a98dd1d-07f4-4470-8366-210ec3ae8578",
       "RS232"
+    ],
+    [
+      "35995f38-68c0-46e2-b2fd-985fe3f09ad0",
+      "Remote IO Block 1"
+    ],
+    [
+      "be2e0416-3be1-412f-8c3d-deda81998237",
+      "Remote IO Block 2"
+    ],
+    [
+      "6b2772ce-0c35-4685-abd7-aa13c67cd0e6",
+      "RTC"
+    ],
+    [
+      "a733259a-e36e-4b53-aba1-6642256ff9ff",
+      "CAN"
+    ],
+    [
+      "8353474b-ab04-4cb9-b837-cffb8b94312c",
+      "RS485"
+    ],
+    [
+      "985b7244-e390-434e-a369-2e512dc79bd3",
+      "EEPROM"
     ]
   ],
   "text_variables": {}

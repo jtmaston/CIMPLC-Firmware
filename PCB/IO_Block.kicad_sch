@@ -4,6 +4,13 @@
 
   (paper "A4")
 
+  (title_block
+    (date "2023-04-23")
+    (rev "1")
+    (company "UPB - FIIR - Roboți și sisteme de producție")
+    (comment 1 "Alexandru-Ioan Anastasiu")
+  )
+
   (lib_symbols
     (symbol "TB001-500-10BE:TB001-500-10BE" (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 16.51 7.62 0)

@@ -4,6 +4,13 @@
 
   (paper "A4")
 
+  (title_block
+    (date "2023-04-23")
+    (rev "1")
+    (company "UPB - FIIR - Roboți și sisteme de producție")
+    (comment 1 "Alexandru-Ioan Anastasiu")
+  )
+
   (lib_symbols
     (symbol "TC0203620000G:TC0203620000G" (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 16.51 7.62 0)
@@ -145,6 +152,7 @@
     )
   )
 
+
   (junction (at 123.19 116.84) (diameter 0) (color 0 0 0 0)
     (uuid 25f92ae3-475a-43cb-b573-8346689c885a)
   )
@@ -236,7 +244,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 3b270c1e-6e72-46a6-afff-21a1be066afd)
   )
-  (hierarchical_label "+5V" (shape input) (at 163.83 113.665 90) (fields_autoplaced)
+  (hierarchical_label "+3.3v" (shape input) (at 163.83 113.665 90) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 413f23f5-23be-456d-b6e2-2e0e242f4b8f)
   )
