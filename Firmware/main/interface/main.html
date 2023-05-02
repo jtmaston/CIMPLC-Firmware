@@ -1,0 +1,248 @@
+<html>
+
+
+
+<style>
+    table,th,td{
+        border: 1px solid black;
+        text-align: center;
+        border-collapse: collapse;
+    }
+    * {
+        box-sizing: border-box;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 50%;
+        padding: 5px;
+    }
+</style>
+
+
+<head>
+    <title>Sensor Data</title>
+</head>
+<body>
+<div class="row">
+    <div class="column">
+        <table>
+            <th colspan="8">GPS Data</th>
+            <tr>
+                <th>UTC Time</th>
+                <th>Date</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Altitude</th>
+                <th>Satellites in view</th>
+                <th>Heading</th>
+                <th>Speed</th>
+            </tr>
+            <tr>
+                <td id="utc">-</td>
+                <td id="date">-</td>
+                <td id="lat">-</td>
+                <td id="long">-</td>
+                <td id="alt">-</td>
+                <td id="satview">-</td>
+                <td id="hdg">-</td>
+                <td id="spd">-</td>
+            </tr>
+            <th colspan="8">Front sensor array</th>
+            <tr>
+                <th>&nbspX acceleration&nbsp</th>
+                <th>&nbspY acceleration&nbsp</th>
+                <th>&nbspZ acceleration&nbsp</th>
+                <th>&nbspX magnetometer&nbsp</th>
+                <th>&nbspY magnetometer&nbsp</th>
+                <th>&nbspZ magnetometer&nbsp</th>
+                <th>&nbspLeft suspension&nbsp</th>
+                <th>&nbspRight suspension&nbsp</th>
+            </tr>
+            <tr>
+                <td id="frontAccX">-</td>
+                <td id="frontAccY">-</td>
+                <td id="frontAccZ">-</td>
+                <td id="frontMagX">-</td>
+                <td id="frontMagY">-</td>
+                <td id="frontMagZ">-</td>
+                <td id="frontLeftSusPos">-</td>
+                <td id="frontRightSusPos">-</td>
+            </tr>
+            <th colspan="8">Rear sensor array</th>
+            <tr>
+                <th>X acceleration</th>
+                <th>Y acceleration</th>
+                <th>Z acceleration</th>
+                <th>X magnetometer</th>
+                <th>Y magnetometer</th>
+                <th>Z magnetometer</th>
+                <th>Left suspension</th>
+                <th>Right suspension</th>
+            </tr>
+            <tr>
+                <td id="readAccX">-</td>
+                <td id="rearAccY">-</td>
+                <td id="rearAccZ">-</td>
+                <td id="rearMagX">-</td>
+                <td id="rearMagY">-</td>
+                <td id="rearMagZ">-</td>
+                <td id="rearLeftSusPos">-</td>
+                <td id="rearRightSusPos">-</td>
+            </tr>
+
+            <th colspan="8">Tyre pressures</th>
+            <tr>
+                <th colspan="2">Front left</th>
+                <th colspan="2">Front right</th>
+                <th colspan="2">Rear left</th>
+                <th colspan="2">Rear right</th>
+            </tr>
+            <tr>
+                <td id="frontLeftPressure" colspan="2">-</td>
+                <td id="frontRightPressure" colspan="2">-</td>
+                <td id="rearLeftPressure" colspan="2">-</td>
+                <td id="rearRightPressure" colspan="2">-</td>
+            </tr>
+            <th colspan="8">Brake system pressures</th>
+            <tr>
+                <th colspan="4">Front</th>
+                <th colspan="4">Rear</th>
+            </tr>
+            <tr>
+                <td id="frontBrakePressure" colspan="4">-</td>
+                <td id="rearBrakePressure" colspan="4">-</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="column">
+
+        <table>
+            <th colspan="2">Bus information</th>
+            <tr><th colspan="2">CAN</th></tr>
+            <tr><th>&nbsp&nbspUplink&nbsp&nbsp</th><th>&nbsp&nbspLast sent&nbsp&nbsp</th></tr>
+            <tr><td>No link</td><td>-</td></tr>
+            <tr><th colspan="2">BLE</th></tr>
+            <tr><th>Uplink</th><th>Last sent</th></tr>
+            <tr><td>No link</td><td>-</td></tr>
+            <tr><th colspan="2">Radio</th></tr>
+            <tr><th>Uplink</th><th>Last sent</th></tr>
+            <tr><td>No link</td><td>-</td></tr>
+
+        </table>
+
+    </div>
+</div>
+
+</body>
+
+
+<script>
+
+
+    function getData()
+    {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "/data", false);
+        xhr.onload = function()
+        {
+            console.log(xhr.response);
+            let v = xhr.response.match(/[+-]?\d+(\.\d+)?/g);
+            console.log(v);
+
+            if( v[0] > 0 )
+            {
+                let t = v[0].toString();
+                document.getElementById("utc").innerHTML =
+                    t.substring(0, 2) + ":" + t.substring(2, 4) + ":" + t.substring(4, 6);
+
+                t = v[1].toString();
+
+                document.getElementById("date").innerHTML =
+                    t.substring(0, 2) + "/" + t.substring(2, 4) + "/" + t.substring(4, 6);
+
+                t = v[2].toString();
+                if (t[0] === '-')
+                {
+                    document.getElementById("lat").innerHTML =
+                        t.substring(1, 3) + "\u00B0" + t.substring(3) + "'";
+                }else
+                {
+                    document.getElementById("lat").innerHTML =
+                        t.substring(0, 2) + "\u00B0" + t.substring(2) + "'";
+                }
+
+                t = v[3].toString();
+                if (t[0] === '-')
+                {
+                    document.getElementById("long").innerHTML =
+                        t.substring(1, 3) + "\u00B0" + t.substring(3) + "'";
+                }else
+                {
+                    document.getElementById("long").innerHTML =
+                        t.substring(0, 2) + "\u00B0" + t.substring(2) + "'";
+                }
+
+                t = v[5].toString();
+                document.getElementById("hdg").innerHTML = t + "\u00B0";
+
+                t = v[6].toString();
+                document.getElementById("alt").innerHTML = t + "m";
+
+                t = v[7].toString();
+                document.getElementById("spd").innerHTML = t + "kph";
+            }
+            else
+            {
+                document.getElementById("utc").innerHTML = "-";
+                document.getElementById("date").innerHTML = "-";
+                document.getElementById("lat").innerHTML = "-";
+                document.getElementById("long").innerHTML = "-";
+                document.getElementById("alt").innerHTML = "-";
+            }
+
+            document.getElementById("satview").innerHTML = v[4];
+
+            let t = v[8].toString();
+            document.getElementById("frontAccX").innerHTML = t + "g";
+
+            t = v[9].toString();
+            document.getElementById("frontAccY").innerHTML = t + "g";
+
+            t = v[10].toString();
+            document.getElementById("frontAccZ").innerHTML = t + "g";
+
+            t = v[11].toString();
+            document.getElementById("frontMagX").innerHTML = t + "uT";
+
+            t = v[12].toString();
+            document.getElementById("frontMagY").innerHTML = t + "uT";
+
+            t = v[13].toString();
+            document.getElementById("frontMagZ").innerHTML = t + "uT";
+
+            t = v[14].toString();
+            document.getElementById("frontLeftSusPos").innerHTML = t + "%";
+
+            t = v[15].toString();
+            document.getElementById("frontRightSusPos").innerHTML = t + "%";
+
+        }
+
+        xhr.send();
+        setTimeout(getData, 100);
+    }
+
+
+
+    getData();
+
+
+
+</script>
+
+</html>

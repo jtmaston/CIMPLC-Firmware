@@ -1,0 +1,55 @@
+<html>
+<head><title>Upload file</title></head>
+<script>
+    var xhr = new XMLHttpRequest();
+
+    function uploadProgress(event) {
+        if (event.lengthComputable) {
+            var pctComplete = Math.round(event.loaded / event.total * 100);
+            document.getElementById("feedback").innerHTML = `Progress: ${pctComplete}%`;
+        } else {
+            document.getElementById("feedback").innerHTML = `Progress: ${event.loaded} bytes`
+        }
+
+    }
+
+    function uploaded() {
+        document.getElementById("feedback").innerHTML = xhr.response;
+    }
+
+    function uploadError() {
+        document.getElementById("feedback").innerHTML = "File upload failed";
+    }
+
+    function doUpload() {
+        var theFile = document.getElementById("filename").files[0];
+        xhr.open("POST", "/upload", true);
+        xhr.upload.addEventListener("progress", uploadProgress);
+        xhr.upload.addEventListener("load", uploaded);
+        xhr.upload.addEventListener("error", uploadError);
+        xhr.upload.addEventListener("abort", uploadError);
+
+        document.getElementById("feedback").innerHTML = `Starting upload`;
+        xhr.setRequestHeader("Content-Type", "application/octet-stream");
+        xhr.setRequestHeader("Content-Disposition", "attachment");
+        xhr.send(theFile);
+    }
+</script>
+<body>
+<p>
+    <form id="uploadform" action="/upload" method="POST" enctype="application/octet-stream">
+        <input type="file" id="filename" required="required">
+        <input type="button" name="Upload" value="Upload" onClick="doUpload()">
+    </form>
+</p>
+
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<p>
+    <form id="rebootButton" action="/reboot" method="POST" target="hiddenFrame">
+        <button name="foo" value="reboot">Reboot</button>
+    </form>
+</p>
+
+<p id="feedback">Click [Browse...] to select a file, then click [Upload] to start uploading process</p>
+</body>
+</html>
