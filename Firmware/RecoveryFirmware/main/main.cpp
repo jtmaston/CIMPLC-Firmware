@@ -1,4 +1,4 @@
-//#include <nvs_flash.h>
+#include <nvs_flash.h>
 #include <esp_wifi.h>
 #include <esp_ota_ops.h>
 #include <esp_app_desc.h>
@@ -6,8 +6,9 @@
 #include <esp_http_server.h>
 
 
+
 void wifiInitSoftAP() {
-    //nvs_flash_init();
+    nvs_flash_init();
     ESP_ERROR_CHECK(esp_netif_init());
     esp_netif_create_default_wifi_ap();
 
@@ -38,7 +39,7 @@ esp_err_t renderUploadPage(httpd_req_t *req) {
 }
 
 esp_err_t renderUploadPagePOST(httpd_req_t *req) {
-    char buf[4096];
+    char buf[8192];
     int32_t received;
     uint32_t totalReceived = 0;
     esp_ota_handle_t updateHandle = 0;
@@ -58,26 +59,10 @@ esp_err_t renderUploadPagePOST(httpd_req_t *req) {
                 if (received >
                     sizeof(esp_image_header_t) + sizeof(esp_image_segment_header_t) + sizeof(esp_app_desc_t)) {
                     // check current version with downloading
-                    esp_app_desc_t updateInfo;
-                    memcpy(&updateInfo,
-                           &buf[sizeof(esp_image_header_t) + sizeof(esp_image_segment_header_t)],
-                           sizeof(esp_app_desc_t));
-
-                    esp_app_desc_t runningAppInfo;
-                    if (esp_ota_get_partition_description(esp_ota_get_running_partition(), &runningAppInfo) == ESP_OK) {
-                    }
-
                     if ((int) buf[0] != 0xE9) {
-                        //char err[] = "Magic byte not found!";
-                        //httpd_resp_send(req, err, sizeof(err));
                         return ESP_ERR_OTA_VALIDATE_FAILED;
                     } else {
                         updatePartition = esp_ota_get_next_update_partition(nullptr);
-                        if (updatePartition == nullptr) {
-                            //char err[] = "No available OTA partition!";
-                            //httpd_resp_send(req, err, sizeof(err));
-                            return ESP_ERR_OTA_PARTITION_CONFLICT;
-                        }
                         int ret = esp_ota_begin(updatePartition, OTA_SIZE_UNKNOWN, &updateHandle);
                         if(ret != ESP_OK) {
                         }
@@ -121,7 +106,7 @@ httpd_uri_t mainPageUriPOST = {
 
 httpd_handle_t setupHTTPServer() {
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
-    config.stack_size = 3072 + 4096 + 512;              // 3072: for functionality ; 4096 for packet stack and 256 for
+    config.stack_size = 3072 + 8192 + 512;              // 3072: for functionality ; 4096 for packet stack and 256 for
     httpd_handle_t server = nullptr;                    // verification headroom
 
     if (httpd_start(&server, &config) == ESP_OK) {

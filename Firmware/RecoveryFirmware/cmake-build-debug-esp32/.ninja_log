@@ -1,0 +1,16 @@
+# ninja log v5
+74	317	1683570347992937071	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_utility.c.obj	7b9051cf82973664
+14	203	1683570347782998909	/Users/aanas/Developer/CB109/PLC/Firmware/RecoveryFirmware/cmake-build-debug-esp32/partition_table/partition-table.bin	409ad5707dec7822
+14	73	1683570347749722244	/Users/aanas/Developer/CB109/PLC/Firmware/RecoveryFirmware/cmake-build-debug-esp32/esp-idf/esp_system/ld/memory.ld	814b3ce77cb9f696
+74	234	1683570347909545203	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash_config_esp32.c.obj	f6e44c4f74158837
+74	205	1683570347879839632	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/flash_qio_mode.c.obj	f9e5764cbb99c1e1
+234	366	1683570348042788903	esp-idf/app_update/CMakeFiles/__idf_app_update.dir/esp_ota_ops.c.obj	6849844493a8d274
+205	316	1683570347992250418	esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj	71e3ff8cf21ae93f
+74	225	1683570347899344491	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash.c.obj	dfc28da4cdf016fa
+15	27	1683570347703331758	/Users/aanas/Developer/CB109/PLC/Firmware/RecoveryFirmware/cmake-build-debug-esp32/project_elf_src_esp32.c	6d56bbaa0e1e527f
+226	305	1683570347980008497	esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj	1b490c197db1631c
+14	73	1683570347749722244	esp-idf/esp_system/ld/memory.ld	814b3ce77cb9f696
+202	335	1683570348011125080	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp_image_format.c.obj	731de459a62d2be3
+14	203	1683570347782998909	partition_table/partition-table.bin	409ad5707dec7822
+15	27	1683570347703331758	project_elf_src_esp32.c	6d56bbaa0e1e527f
+74	202	1683570347876531199	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_partitions.c.obj	8f188e6aa3dbd4bd
