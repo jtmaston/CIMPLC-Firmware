@@ -1,11 +1,8 @@
 #include <nvs_flash.h>
 #include <esp_wifi.h>
 #include <esp_ota_ops.h>
-#include <esp_app_desc.h>
 #include <esp_image_format.h>
 #include <esp_http_server.h>
-
-
 
 void wifiInitSoftAP() {
     nvs_flash_init();
@@ -64,9 +61,6 @@ esp_err_t renderUploadPagePOST(httpd_req_t *req) {
                     } else {
                         updatePartition = esp_ota_get_next_update_partition(nullptr);
                         int ret = esp_ota_begin(updatePartition, OTA_SIZE_UNKNOWN, &updateHandle);
-                        if(ret != ESP_OK) {
-                        }
-
                         esp_ota_write(updateHandle, buf, received);
                         magicPacketVerified = true;
                         totalReceived += received;
@@ -86,7 +80,6 @@ esp_err_t renderUploadPagePOST(httpd_req_t *req) {
     esp_ota_end(updateHandle);
     ESP_ERROR_CHECK(esp_ota_set_boot_partition(updatePartition));
 
-    //close(appInterconnect.sock);
     esp_restart();
 }
 
