@@ -5,9 +5,13 @@
 #include <esp_http_server.h>
 
 void wifiInitSoftAP() {
-    nvs_flash_init();
-    ESP_ERROR_CHECK(esp_netif_init());
+
+    if( nvs_flash_init() == ESP_ERR_NVS_NO_FREE_PAGES)
+        esp_restart();
+
+    esp_netif_init();
     esp_netif_create_default_wifi_ap();
+
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     esp_wifi_init(&cfg);
@@ -26,6 +30,7 @@ void wifiInitSoftAP() {
     esp_wifi_set_mode(WIFI_MODE_AP);
     esp_wifi_set_config(WIFI_IF_AP, &wifiConfig);
     esp_wifi_start();
+
 }
 
 
@@ -113,21 +118,9 @@ httpd_handle_t setupHTTPServer() {
 extern "C"{
 
 void app_main() {
-
     ESP_ERROR_CHECK(esp_event_loop_create_default());
-
     wifiInitSoftAP();
-    setupHTTPServer();
+    //setupHTTPServer();
 
 }
 }
-
-/*
- * # Name,Type,SubType,Offset,Size,Flags
-nvs,data,nvs,0x9000,0x4000,
-otadata,data,ota,0xd000,0x2000,
-phy_init,data,phy,0xf000,0x1000,
-factory,app,factory,,500K,
-ota_0,app,ota_0,,1700K,
-ota_1,app,ota_1,,1700K,
- */
