@@ -1,1 +1,47 @@
-<html><script>let xhr=new XMLHttpRequest(); function done(event){if (event.lengthComputable){document.getElementById("fdb").innerHTML=`Done`;}}function doUpload(){var theFile=document.getElementById("filename").files[0]; xhr.open("POST", "/", true); xhr.upload.addEventListener("done", done) document.getElementById("fdb").innerHTML=`Starting upload`; xhr.setRequestHeader("Content-Type", "application/octet-stream"); xhr.setRequestHeader("Content-Disposition", "attachment"); xhr.send(theFile);}</script><body><p><form id="uploadform" action="/" method="POST" encType="application/octet-stream"><input type="file" id="filename" required="required"> <input type="button" name="Upload" value="Upload" onClick="doUpload()"></form></p><p id="fdb"></p></body></html>
+<html>
+<head><title>Upload file</title></head>
+<script>
+    var xhr = new XMLHttpRequest();
+
+    function uploadProgress(event) {
+        console.log(event.loaded)
+        if (event.lengthComputable) {
+            var pctComplete = Math.round(event.loaded / event.total * 100);
+            document.getElementById("feedback").innerHTML = `Progress: ${pctComplete}%`;
+        } else {
+            document.getElementById("feedback").innerHTML = `Progress: ${event.loaded} bytes`
+        }
+
+    }
+
+    function uploaded() {
+        document.getElementById("feedback").innerHTML = xhr.response;
+        location.reload(true);
+    }
+
+    function doUpload() {
+        var theFile = document.getElementById("filename").files[0];
+        xhr.open("POST", "/", true);
+        xhr.upload.addEventListener("progress", uploadProgress);
+        xhr.upload.addEventListener("load", uploaded);
+
+        document.getElementById("feedback").innerHTML = `Starting upload`;
+        xhr.setRequestHeader("Content-Type", "application/octet-stream");
+        xhr.setRequestHeader("Content-Disposition", "attachment");
+        xhr.send(theFile);
+    }
+</script>
+<body>
+<p>
+<form id="uploadform" action="/" method="POST" encType="application/octet-stream">
+    <input type="file" id="filename" required="required">
+    <input type="button" name="Upload" value="Upload" onClick="doUpload()">
+</form>
+</p>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<p>
+</p>
+
+<p id="feedback">Click [Browse...] to select a file, then click [Upload] to start uploading process</p>
+</body>
+</html>

@@ -3,13 +3,12 @@
 #include <esp_ota_ops.h>
 #include <esp_image_format.h>
 #include <esp_http_server.h>
+#include <esp_log.h>
 
 void wifiInitSoftAP() {
 
-    if( nvs_flash_init() == ESP_ERR_NVS_NO_FREE_PAGES)
-        esp_restart();
-
-    esp_netif_init();
+    //ESP_ERROR_CHECK(nvs_flash_init());
+    ESP_ERROR_CHECK(esp_netif_init());
     esp_netif_create_default_wifi_ap();
 
 
@@ -29,7 +28,7 @@ void wifiInitSoftAP() {
 
     esp_wifi_set_mode(WIFI_MODE_AP);
     esp_wifi_set_config(WIFI_IF_AP, &wifiConfig);
-    esp_wifi_start();
+    ESP_ERROR_CHECK(esp_wifi_start());
 
 }
 
@@ -40,8 +39,14 @@ esp_err_t renderUploadPage(httpd_req_t *req) {
     return httpd_resp_send(req, uploadWebpageStart, HTTPD_RESP_USE_STRLEN);
 }
 
+#define M_CHUNKSIZE 32768 * 2
+
+#include <time.h>
 esp_err_t renderUploadPagePOST(httpd_req_t *req) {
-    char buf[8192];
+
+    char* buf = (char*)malloc(M_CHUNKSIZE * sizeof(char));
+    //printf("Free now: %lu\n", xPortGetFreeHeapSize());
+
     int32_t received;
     uint32_t totalReceived = 0;
     esp_ota_handle_t updateHandle = 0;
@@ -54,8 +59,8 @@ esp_err_t renderUploadPagePOST(httpd_req_t *req) {
     }
 
     while (totalReceived < req->content_len) {
-        memset(buf, 0, sizeof(buf));
-        received = httpd_req_recv(req, buf, sizeof(buf));
+        memset(buf, 0, M_CHUNKSIZE);
+        received = httpd_req_recv(req, buf, M_CHUNKSIZE);
         if (received > 0) {
             if (!magicPacketVerified) {
                 if (received >
@@ -65,7 +70,7 @@ esp_err_t renderUploadPagePOST(httpd_req_t *req) {
                         return ESP_ERR_OTA_VALIDATE_FAILED;
                     } else {
                         updatePartition = esp_ota_get_next_update_partition(nullptr);
-                        int ret = esp_ota_begin(updatePartition, OTA_SIZE_UNKNOWN, &updateHandle);
+                        esp_ota_begin(updatePartition, req->content_len, &updateHandle);
                         esp_ota_write(updateHandle, buf, received);
                         magicPacketVerified = true;
                         totalReceived += received;
@@ -85,7 +90,10 @@ esp_err_t renderUploadPagePOST(httpd_req_t *req) {
     esp_ota_end(updateHandle);
     ESP_ERROR_CHECK(esp_ota_set_boot_partition(updatePartition));
 
+    free (buf);
     esp_restart();
+
+    return ESP_OK;
 }
 
 httpd_uri_t mainPageUri = {
@@ -103,8 +111,10 @@ httpd_uri_t mainPageUriPOST = {
 
 
 httpd_handle_t setupHTTPServer() {
+    //printf("Free now: %lu\n", xPortGetFreeHeapSize());
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
-    config.stack_size = 3072 + 8192 + 512;              // 3072: for functionality ; 4096 for packet stack and 256 for
+
+    config.stack_size = 3072 + 512;              // 3072: for functionality ; 4096 for packet stack and 256 for
     httpd_handle_t server = nullptr;                    // verification headroom
 
     if (httpd_start(&server, &config) == ESP_OK) {
@@ -120,7 +130,7 @@ extern "C"{
 void app_main() {
     ESP_ERROR_CHECK(esp_event_loop_create_default());
     wifiInitSoftAP();
-    //setupHTTPServer();
+    setupHTTPServer();
 
 }
 }
