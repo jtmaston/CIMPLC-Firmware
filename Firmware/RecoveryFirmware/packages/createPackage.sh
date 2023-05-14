@@ -16,6 +16,12 @@ echo "esptool.py -b 460800 --before default_reset\
    0x6000 partition-table.bin 0x7000 ota_data_initial.bin\
     0x10000 BootloaderStub.bin" > flash.sh
 
+echo "esptool.py -b 460800 --before default_reset\
+ --after hard_reset --chip esp32  write_flash --flash_mode dio\
+  --flash_size 4MB --flash_freq 80m 0x1000 bootloader.bin\
+   0x6000 partition-table.bin 0x7000 ota_data_initial.bin\
+    0x10000 BootloaderStub.bin" > flash.ps1
+
 cd ..
 zip -r $1.zip $1
 rm -r $1
