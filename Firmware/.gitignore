@@ -62,4 +62,5 @@ _deps
 cmake-*
 .idea
 
-RecoveryFirmware/packages/v*
+packages/Firmware_*
+packages/Recovery_*
