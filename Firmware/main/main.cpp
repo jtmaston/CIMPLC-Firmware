@@ -43,8 +43,10 @@ void app_main() {
     wifiInitSoftAP();
     setupHTTPServer();
     initializeREPL();
-    setupHTTPServer();
-    initializeSerialPorts();
+    initEEPROM();
+
+    writeByte(0x10, 0x00);
+    printf("%x\n", readByte(0x10));
 
 
     /*initFileSystem();
