@@ -16,7 +16,7 @@ int initEEPROM()
         .sda_pullup_en=GPIO_PULLUP_DISABLE,
         .scl_pullup_en=GPIO_PULLUP_DISABLE,
     };
-    conf.master.clk_speed = 400000;
+    conf.master.clk_speed = 100000;
 
     /*
      * gpio_reset_pin(GPIO_NUM_18);
@@ -34,17 +34,46 @@ int initEEPROM()
     return ESP_OK;
 }
 
-void writeByte(uint16_t addr, uint8_t byte)
+#define EEPROM_ADDR 0x20
+
+void writeByte(uint16_t address, uint8_t data)
 {
+    /*i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, (EEPROM_ADDR << 1) | I2C_MASTER_WRITE, I2C_MASTER_ACK);
+    i2c_master_write_byte(cmd, (address >> 8) & 0xFF, I2C_MASTER_ACK);
+    i2c_master_write_byte(cmd, address & 0xFF, I2C_MASTER_ACK);
+    i2c_master_write_byte(cmd, data, I2C_MASTER_ACK);
+    i2c_master_stop(cmd);
+
+    i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
+    i2c_cmd_link_delete(cmd);*/
+
+
+
+    /*i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, (EEPROM_ADDR << 1) | I2C_MASTER_WRITE, true);
+    i2c_master_write_byte(cmd, (address >> 8) & 0xFF, true);                   // High byte of address
+    i2c_master_write_byte(cmd, address & 0xFF, true);                          // Low byte of address
+    i2c_master_write_byte(cmd, data, true);
+    i2c_master_stop(cmd);
+    i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
+    i2c_cmd_link_delete(cmd);*/
+
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
     i2c_master_write_byte(cmd, (0x50 << 1) | I2C_MASTER_WRITE, true);
-    i2c_master_write_byte(cmd, (addr >> 8) & 0xFF, true);                   // High byte of address
-    i2c_master_write_byte(cmd, addr & 0xFF, true);                          // Low byte of address
-    i2c_master_write_byte(cmd, byte, true);
+    i2c_master_write_byte(cmd, (address >> 8) & 0xFF, true); // High byte of address
+    i2c_master_write_byte(cmd, address & 0xFF, true);        // Low byte of address
+    i2c_master_write_byte(cmd, data, true);
     i2c_master_stop(cmd);
     i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
+
+    //return data;
+
+
 }
 
 uint8_t readByte(uint16_t addr)
@@ -52,15 +81,27 @@ uint8_t readByte(uint16_t addr)
     uint8_t data;
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
-    i2c_master_write_byte(cmd, (0x50 << 1) | I2C_MASTER_WRITE, true);
-    i2c_master_write_byte(cmd, (addr >> 8) & 0xFF, true);                   // High byte of address
-    i2c_master_write_byte(cmd, addr & 0xFF, true);                          // Low byte of address
+    i2c_master_write_byte(cmd, (EEPROM_ADDR << 1) | I2C_MASTER_WRITE, I2C_MASTER_ACK);
+    i2c_master_write_byte(cmd, (addr >> 8) & 0xFF, I2C_MASTER_ACK);                   // High byte of address
+    i2c_master_write_byte(cmd, addr & 0xFF, I2C_MASTER_ACK);                          // Low byte of address
     i2c_master_start(cmd);
-    i2c_master_write_byte(cmd, (0x50 << 1) | I2C_MASTER_READ, true);
-    i2c_master_read_byte(cmd, &data, I2C_MASTER_ACK);
+    i2c_master_write_byte(cmd, (EEPROM_ADDR << 1) | I2C_MASTER_READ, I2C_MASTER_ACK);
+    i2c_master_read_byte(cmd, &data, I2C_MASTER_NACK);
     i2c_master_stop(cmd);
     i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
+
+    /*uint8_t data;
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, (0x50 << 1) | I2C_MASTER_WRITE, true);
+    i2c_master_write_byte(cmd, addr, true);
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, (0x50 << 1) | I2C_MASTER_READ, true);
+    i2c_master_read_byte(cmd, &data, I2C_MASTER_NACK);
+    i2c_master_stop(cmd);
+    i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
+    i2c_cmd_link_delete(cmd);*/
 
     return data;
 }

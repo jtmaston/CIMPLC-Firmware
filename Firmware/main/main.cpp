@@ -3,6 +3,8 @@
 #include <modules/filesystem.hpp>
 #include <modules/twai.hpp>
 #include "modules/eeprom.hpp"
+#include "driver/i2c.h"
+
 
 Transport appInterconnect;
 __NOINIT_ATTR char rebootCounter;
@@ -12,6 +14,21 @@ RTC_NOINIT_ATTR int wearLevelAddress;
 extern "C" {
 
 static const char* TAG = "main";
+
+void pula(void *pvParameters)
+{
+    uint8_t i = 0;
+    while(true)
+    {
+        uint8_t data;
+        uint8_t byte = i2c_master_write_read_device(I2C_NUM_0, 0x50, &data, 1, &data, sizeof(uint8_t), 1000 / portTICK_PERIOD_MS);
+        i2c_master_
+        printf("0x%x: 0x%x ",i, byte);
+        fflush(stdout);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        i++;
+    }
+}
 
 void app_main() {
 
@@ -45,13 +62,11 @@ void app_main() {
     initializeREPL();
     initEEPROM();
 
-    writeByte(0x10, 0x00);
-    printf("%x\n", readByte(0x10));
-
-
     /*initFileSystem();
     initializeTWAIBus();
     //initializeSerialPorts();*/
+
+    xTaskCreate(pula, "pulaTask", 8192, nullptr, tskIDLE_PRIORITY, nullptr);
 
     esp_ota_mark_app_valid_cancel_rollback();
     rebootCounter = 0;
