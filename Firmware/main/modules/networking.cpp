@@ -3,32 +3,28 @@
 //
 
 #include "networking.hpp"
-#include "gps.hpp"
-
 
 void wifiInitSoftAP() {
-    nvs_flash_init();                                           // initialize nonvolatile flash
-    esp_netif_init();                                           // initialize the network interface
+    ESP_ERROR_CHECK(esp_netif_init());                                           // initialize the network interface
     appInterconnect.iface = esp_netif_create_default_wifi_ap(); // and register it into the AppInterconnect
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();        // create a default parameter configuration
-    esp_wifi_init(&cfg);                                 // initialize the Wi-Fi
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));                                 // initialize the Wi-Fi
 
     wifi_config_t wifiConfig =                                  // and set parameters
             {
             .ap = {
-                    .ssid = "DR04",
-                    .password = "UPBDriveFS",
-                    .ssid_len = 5U,
+                    .ssid = "PLC-SecureLink",
+                    .password = "CrappyPLC",
                     .channel = 10U,
                     .authmode = WIFI_AUTH_WPA2_PSK,
                     .max_connection = 2U,                       // note: a maximum 2 clients are allowed at any time
             },
     };
 
-    esp_wifi_set_mode(WIFI_MODE_AP);                      // set to softAP
-    esp_wifi_set_config(WIFI_IF_AP, &wifiConfig); // and configure
-    esp_wifi_start();                                           // then start
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));                      // set to softAP
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &wifiConfig)); // and configure
+    ESP_ERROR_CHECK(esp_wifi_start());                                           // then start
 
     xTaskCreate(tcpServerTask,
                 "telnetListener",
@@ -38,8 +34,6 @@ void wifiInitSoftAP() {
                 nullptr);
 }
 
-extern unsigned int rebootCounter;
-extern unsigned int otaRebootAttemptCounter;
 
 void tcpServerTask(void *pvParameters) {
     while(true)
@@ -92,14 +86,52 @@ void tcpServerTask(void *pvParameters) {
 
         appInterconnect.socketConnected = true;
 
-        rebootCounter = 0;
-        otaRebootAttemptCounter = 0;
-
         shutdown(listenSock, SHUT_RDWR);
         close(listenSock);
         vTaskSuspend(nullptr);
     }
 
+}
+
+extern const char webpageStart[] asm ("_binary_main_html_start");
+
+esp_err_t renderStatsPage(httpd_req_t *req) {
+    return httpd_resp_send(req, webpageStart, HTTPD_RESP_USE_STRLEN);
+}
+
+esp_err_t doEmgReboot(httpd_req_t *req) {
+    esp_partition_iterator_t pi = esp_partition_find(ESP_PARTITION_TYPE_APP,
+                                                     ESP_PARTITION_SUBTYPE_APP_FACTORY,
+                                                     "factory");
+    const esp_partition_t *factory = esp_partition_get(pi);
+    esp_partition_iterator_release(pi);
+    esp_ota_set_boot_partition(factory);
+    esp_restart();
+}
+
+httpd_uri_t statsPageUri = {
+        .uri = "/",
+        .method = HTTP_GET,
+        .handler = renderStatsPage,
+        .user_ctx = nullptr};
+
+httpd_uri_t rebootPagePOSTUri = {
+        .uri = "/reboot",
+        .method = HTTP_POST,
+        .handler = doEmgReboot,
+        .user_ctx = nullptr};
+
+httpd_handle_t setupHTTPServer() {
+    httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    config.stack_size = 3072 + 4096 + 512;              // 3072: for functionality ; 4096 for packet stack and 256 for
+    httpd_handle_t server = nullptr;                    // verification headroom
+
+    if (httpd_start(&server, &config) == ESP_OK) {
+        httpd_register_uri_handler(server, &statsPageUri);
+        httpd_register_uri_handler(server, &rebootPagePOSTUri);
+    }
+    appInterconnect.httpdServer = server;
+    return server;
 }
 
 

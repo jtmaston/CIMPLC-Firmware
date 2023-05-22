@@ -5,7 +5,7 @@
 #ifndef SERIALTEST_REPL_HPP
 #define SERIALTEST_REPL_HPP
 
-#include <init/commonComponents.hpp>
+#include "init/commonComponents.hpp"
 #include <esp_console.h>
 #include <esp_app_desc.h>
 #include <esp_ota_ops.h>
@@ -13,7 +13,7 @@
 
 #define REPLCOMM(x)int x (int a, char** b)
 
-#include <modules/filesystem.hpp>
+#include "modules/filesystem.hpp"
 extern Transport appInterconnect;
 bool initializeREPL();
 

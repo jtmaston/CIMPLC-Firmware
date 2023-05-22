@@ -4,6 +4,7 @@
 
 #include "REPL.hpp"
 #include "modules/twai.hpp"
+#include <esp_timer.h>
 
 esp_console_repl_t *repl = nullptr;
 
@@ -71,8 +72,8 @@ int killTop(int x, char **y) {
 
 int memTest(int x, char **y)
 {
-    printf("Minimum: %lu\n", xPortGetMinimumEverFreeHeapSize());
-    printf("Free now: %lu\n", xPortGetFreeHeapSize());
+    printf("Minimum: %d\n", xPortGetMinimumEverFreeHeapSize());
+    printf("Free now: %d\n", xPortGetFreeHeapSize());
     fflush(stdout);
     return 0;
 }

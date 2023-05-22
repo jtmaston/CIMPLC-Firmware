@@ -16,10 +16,9 @@ int createTWAITask(int x, char**y)
     return 0;
 }
 
-#include <array>
 [[noreturn]] void twaiTask(void *pvParameters)
 {
-    //stdout = appInterconnect.stdioRedirect;
+    stdout = appInterconnect.stdioRedirect;
 
     // [ID] [ ] [ ] [ ] ...
     while(true)
@@ -32,31 +31,6 @@ int createTWAITask(int x, char**y)
         {
             case ESP_OK:
             {
-                switch(msg.identifier)
-                {
-                    case 0x6:
-                    {
-                        appInterconnect.front.accX_ = (float)(int16_t (msg.data[0]) << 8 | int16_t(msg.data[ 1 ])) / 100.0f;
-                        appInterconnect.front.accY_ = (float)(int16_t (msg.data[2]) << 8 | int16_t(msg.data[ 3 ])) / 100.0f;
-                        appInterconnect.front.accZ_ = (float)(int16_t (msg.data[4]) << 8 | int16_t(msg.data[ 5 ])) / 100.0f;
-
-                        appInterconnect.front.suspPotLeft_ = (float)(((int16_t) msg.data[6]) << 8 | msg.data[ 7 ]) / 100.0f;
-                        //printf("%hd\n", (int16_t (msg.data[4]) << 8 | int16_t(msg.data[ 5 ])));
-                        //printf("%f %f %f %f\n", appInterconnect.front.accX_, appInterconnect.front.accY_, appInterconnect.front.accZ_,
-                        //       appInterconnect.front.suspPotLeft_);
-                        //fflush(stdout);
-                        break;
-                    }
-                    case 0x7:
-                    {
-                        appInterconnect.front.magX_ = (float)(int16_t (msg.data[0]) << 8 | msg.data[ 1 ]) / 100.0f;
-                        appInterconnect.front.magX_ = (float)(int16_t (msg.data[2]) << 8 | msg.data[ 3 ]) / 100.0f;
-                        appInterconnect.front.magX_ = (float)(int16_t (msg.data[4]) << 8 | msg.data[ 5 ]) / 100.0f;
-
-                        appInterconnect.front.suspPotRight_ = (float)(int16_t (msg.data[6]) << 8 | msg.data[ 7 ]) / 100;
-                        break;
-                    }
-                }
 
                 break;
             }
@@ -77,6 +51,10 @@ int createTWAITask(int x, char**y)
                 printf("Invalid state!");
                 fflush(stdout);
                 break;
+            }
+            default:
+            {
+
             }
 
         }
