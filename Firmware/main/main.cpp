@@ -2,7 +2,6 @@
 #include <modules/networking.hpp>
 #include <modules/filesystem.hpp>
 #include <modules/twai.hpp>
-#include "modules/eeprom.hpp"
 
 Transport appInterconnect;
 __NOINIT_ATTR char rebootCounter;
@@ -44,7 +43,6 @@ void app_main() {
     setupHTTPServer();
     initializeREPL();
     setupHTTPServer();
-    initializeSerialPorts();
 
 
     /*initFileSystem();
