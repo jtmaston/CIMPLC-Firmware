@@ -2,7 +2,6 @@
 #include <modules/networking.hpp>
 #include <modules/filesystem.hpp>
 #include <modules/twai.hpp>
-#include "modules/eeprom.hpp"
 #include "driver/i2c.h"
 
 
@@ -22,7 +21,6 @@ void pula(void *pvParameters)
     {
         uint8_t data;
         uint8_t byte = i2c_master_write_read_device(I2C_NUM_0, 0x50, &data, 1, &data, sizeof(uint8_t), 1000 / portTICK_PERIOD_MS);
-        i2c_master_
         printf("0x%x: 0x%x ",i, byte);
         fflush(stdout);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -60,7 +58,6 @@ void app_main() {
     wifiInitSoftAP();
     setupHTTPServer();
     initializeREPL();
-    initEEPROM();
 
     /*initFileSystem();
     initializeTWAIBus();
