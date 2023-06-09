@@ -17,14 +17,6 @@
 #define GPS_SERIAL UART_NUM_2
 #include <rtc.h>
 
-/*const char banner[] = TTY_ORANGE "██╗   ██╗██████╗ ██████╗     ██████╗ ██████╗ ██╗██╗   ██╗███████╗\n" TTY_DEFAULT
-                      TTY_ORANGE "██║" TTY_DEFAULT "   ██║██╔══██╗██╔══██╗    ██╔══██╗██╔══██╗██║██║   ██║██╔══" TTY_ORANGE "══╝\n"
-                      TTY_ORANGE "██║" TTY_DEFAULT "   ██║██████╔╝██████╔╝    ██║  ██║██████╔╝██║██║   ██║█████╗  \n"
-                      TTY_ORANGE "██║" TTY_DEFAULT "   ██║██╔═══╝ ██╔══██╗    ██║  ██║██╔══██╗██║╚██╗ ██╔╝██╔══╝  \n"
-                      TTY_ORANGE "╚██████╔╝██║     ██████╔╝    ██████╔╝██║  ██║██║ ╚████╔╝ ███████╗\n" TTY_DEFAULT
-                      TTY_ORANGE " ╚═════╝ ╚═╝     ╚═════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝  ╚══════╝\n" TTY_DEFAULT;*/
-
-
 const char banner[]    = " ██████╗██╗███╗   ███╗      ██████╗ ██╗      ██████╗\n"
                          "██╔════╝██║████╗ ████║      ██╔══██╗██║     ██╔════╝\n"
                          "██║     ██║██╔████╔██║█████╗██████╔╝██║     ██║     \n"
@@ -41,47 +33,26 @@ const char banner[]    = " ██████╗██╗███╗   ██�
 #include <linenoise/linenoise.h>
 #include <esp_log.h>
 #include <driver/uart.h>
+#include "eeprom.hpp"
 
-struct gpsDataT
+struct Transport
 {
-    float utcTime;
-    int date;
-    float latitude, longitude, altitude;
-    bool fix;
-    uint8_t satelliteCount;
-    uint8_t satellitesInView;
-    float groundSpeed;
-    float heading;
-};
-
-struct sensorArrayData{
-    float accX_;
-    float accY_;
-    float accZ_;
-
-    float magX_;
-    float magY_;
-    float magZ_;
-
-    float suspPotLeft_;
-    float suspPotRight_;
-};
-
-class Transport
-{
-public:
     int sock;
     httpd_handle_t httpdServer;
     sdmmc_card_t *card;
     esp_netif_obj *iface;
     bool socketConnected = false;
-    bool spiHasBeenInit = false;
-    gpsDataT gpsData;
     FILE* stdioRedirect = stdout;
     bool debugPrintGPS = false;
     FILE* logfile;
-    sensorArrayData front, rear;
 
+#define BUILD_DEBUG             // this restricts our operations to the top 0x1000 bytes of the eeprom, to minimize wear
+                                // further
+#ifdef BUILD_DEBUG
+    EEPROM eeprom = EEPROM(0x50, 0x0, 0x1000, 256, true);
+#else
+    EEPROM eeprom = EEPROM(0x50, 0x0, 256 * 1024, 256, true);
+#endif
 };
 
 

@@ -2,6 +2,8 @@
 #include <modules/networking.hpp>
 #include <modules/filesystem.hpp>
 #include <modules/twai.hpp>
+#include "driver/i2c.h"
+
 
 Transport appInterconnect;
 __NOINIT_ATTR char rebootCounter;
@@ -42,8 +44,6 @@ void app_main() {
     wifiInitSoftAP();
     setupHTTPServer();
     initializeREPL();
-    setupHTTPServer();
-
 
     /*initFileSystem();
     initializeTWAIBus();
