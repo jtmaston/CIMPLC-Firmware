@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP CRCW12102K49FKEA
-D RESISTOR, 1210 2.49K Ohm +/-1% 0.5W
-K
-F https://componentsearchengine.com/Datasheets/1/CRCW12102K49FKEA.pdf
-$ENDCMP
-#
-#End Doc Library

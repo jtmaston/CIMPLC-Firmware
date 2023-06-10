@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP MAX232IDR
-D MAX232IDR, Dual Line Transceiver, EIA/TIA-232-F, RS-232, V.28 2-TX 2-RX 2-TRX, 5 V, 16-Pin SOIC
-K
-F https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-SFU2/DSASFU100031433.pdf
-$ENDCMP
-#
-#End Doc Library

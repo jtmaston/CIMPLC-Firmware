@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP RMCF1210JT150R
-D RES, 1210, 150 ohm, 5%, 0.5W
-K
-F https://cs.seielect.com/catalog/SEI-RMCF_RMCP.pdf
-$ENDCMP
-#
-#End Doc Library

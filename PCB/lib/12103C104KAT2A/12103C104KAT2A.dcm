@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP 12103C104KAT2A
-D Cap Ceramic 0.1uF 25V X7R 10% SMD 1210 125C Paper T/R
-K
-F https://spicat.kyocera-avx.com/product/mlcc/chartview/12103C104KAT2A/DataSheet/X7R
-$ENDCMP
-#
-#End Doc Library
