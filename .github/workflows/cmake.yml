@@ -1,0 +1,32 @@
+name: CMake
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    - name: Get Submodules
+      run: git submodule update --init && git pull --recurse-submodules
+    
+    - name: whereami
+      run: ls -la ./main/modules
+    
+    - name: esp-idf build
+      uses: espressif/esp-idf-ci-action@v1
+      with:
+        esp_idf_version: latest
+        target: esp32
+        path: '.'
+ 
+
