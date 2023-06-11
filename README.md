@@ -1,6 +1,6 @@
 <div style="text-align: justify">
 
-# CIMPLC
+# CIMPLC [![CMake](https://github.com/jtmaston/CIMPLC-Firmware/actions/workflows/cmake.yml/badge.svg)](https://github.com/jtmaston/CIMPLC-Firmware/actions/workflows/cmake.yml)
 The CIMPLC is a low-cost, open source high pin-count programmable logic controller, designed as a project while studying at the University of Politehnica, Bucharest. It is designed as a replacement for the aging hardware found inside the CIM ( Computer Integrated Manufacturing ) workcell located in our faculty.
 
 # The software
