@@ -112,3 +112,4 @@ build
 Firmware/build
 Firmware/.idea
 .vscode
+packages/*.zip
