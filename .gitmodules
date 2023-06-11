@@ -1,3 +1,3 @@
-[submodule "Firmware/main/modules/eeprom"]
-	path = Firmware/main/modules/eeprom
+[submodule "main/modules/eeprom"]
+	path = main/modules/eeprom
 	url = https://github.com/jtmaston/AT24-ESP32.git
