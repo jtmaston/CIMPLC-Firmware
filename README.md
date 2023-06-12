@@ -18,6 +18,8 @@ Furthermore, the status of the PLC can be monitored at any time by the use of a 
 vPLC, short for Virtual PLC, simplifies the concept of a PLC to its simplest form: a finite state machine. This allows for the creation of multiple threads of execution, each with access to I/Os and interfaces, while having distinct memory spaces, program stacks and counters. This allows for higher flexibility of the system.
 
 ### WASM
+In order to run Structured Text code on the PLC, we need some way to compile it. In order to do that, a parser is used that turns Structured Text into Web Assembly text (.wat), which can then be compiled and run.
+Interpreting Web Assembly is done using the wasm3 module (https://github.com/wasm3/wasm3)
 ## Limitations
 
 ???
