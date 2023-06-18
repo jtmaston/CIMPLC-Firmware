@@ -1,0 +1,139 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/mbedtls",
+			"paths" : 
+			[
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aes.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/aria.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/asn1.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/asn1write.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/base64.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/bignum.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/build_info.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/camellia.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ccm.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/chacha20.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/chachapoly.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/check_config.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/cipher.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/cmac.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/compat-2.x.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/config_psa.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/constant_time.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ctr_drbg.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/debug.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/des.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/dhm.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecdh.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecdsa.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecjpake.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ecp.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/entropy.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/error.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/gcm.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/hkdf.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/hmac_drbg.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/legacy_or_psa.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/lms.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/mbedtls_config.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/md.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/md5.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/memory_buffer_alloc.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/net_sockets.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/nist_kw.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/oid.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pem.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pk.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs12.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs5.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/pkcs7.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_time.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/platform_util.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/poly1305.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/private_access.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/psa_util.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ripemd160.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/rsa.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha1.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha256.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/sha512.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_cache.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_ciphersuites.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_cookie.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl_ticket.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/threading.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/timing.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/version.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509_crl.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509_crt.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/x509_csr.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/psa",
+			"paths" : 
+			[
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_builtin_composites.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_builtin_primitives.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_compat.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_config.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_common.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_contexts_composites.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_driver_contexts_primitives.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_extra.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_platform.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_se_driver.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_sizes.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_struct.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_types.h",
+				"/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include/psa/crypto_values.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "esp-idf/mbedtls/mbedtls/include",
+		"source" : "/home/mihai/esp/esp-idf/components/mbedtls/mbedtls/include"
+	}
+}

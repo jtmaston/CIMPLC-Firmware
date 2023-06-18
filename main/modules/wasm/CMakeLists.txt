@@ -16,4 +16,4 @@ endif(CCACHE_FOUND)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
-project(eepromLib)
+project(wasmLib)

@@ -1,0 +1,52 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library"
+		],
+		"files" : 
+		[
+			"/home/mihai/esp/esp-idf/components/cxx/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 65,
+				"parent" : 0
+			}
+		]
+	},
+	"id" : "libgcc_cxx::@fc68b7334ac9a9392d41",
+	"name" : "libgcc_cxx",
+	"paths" : 
+	{
+		"build" : "esp-idf/cxx",
+		"source" : "/home/mihai/esp/esp-idf/components/cxx"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "/home/mihai/CLionProjects/CrappyPLC/Firmware/main/modules/wasm3",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "INTERFACE_LIBRARY"
+}

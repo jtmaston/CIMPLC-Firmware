@@ -3,20 +3,23 @@ file(GLOB U_MODULES "modules/*")
 idf_component_register( SRCS
 
     main.cpp
-        wasm3/source/m3_api_libc.c
-        wasm3/source/m3_api_uvwasi.c
-        wasm3/source/m3_code.c
-        wasm3/source/m3_env.c
-        wasm3/source/m3_info.c
-        wasm3/source/m3_api_meta_wasi.c
-        wasm3/source/m3_api_wasi.c
-        wasm3/source/m3_compile.c
-        wasm3/source/m3_exec.c
-        wasm3/source/m3_module.c
-        wasm3/source/m3_api_tracer.c
-        wasm3/source/m3_bind.c
-        wasm3/source/m3_core.c
-        wasm3/source/m3_function.c
-        wasm3/source/m3_parse.c
+    ../wasm3/source/m3_api_libc.c
+    ../wasm3/source/m3_api_uvwasi.c
+    ../wasm3/source/m3_code.c
+    ../wasm3/source/m3_env.c
+    ../wasm3/source/m3_info.c
+    ../wasm3/source/m3_api_meta_wasi.c
+    ../wasm3/source/m3_api_wasi.c
+    ../wasm3/source/m3_compile.c
+    ../wasm3/source/m3_exec.c
+    ../wasm3/source/m3_module.c
+    ../wasm3/source/m3_api_tracer.c
+    ../wasm3/source/m3_bind.c
+    ../wasm3/source/m3_core.c
+    ../wasm3/source/m3_function.c
+    ../wasm3/source/m3_parse.c
+    ../wasm3/source/m3_function.h
+    ../wasm3/source/wasm3.h
+    ../wasm3/source/m3_env.h
 
 INCLUDE_DIRS ".." "include")
