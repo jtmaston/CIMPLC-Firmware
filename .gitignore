@@ -77,7 +77,6 @@ fp-info-cache
 
 # Exported BOM files
 *.xml
-*.csv
 # ---> macOS
 # General
 .DS_Store
@@ -112,5 +111,6 @@ build
 Firmware/build
 Firmware/.idea
 .vscode
+packages/*.zip
 *.old
 RecoveryFirmware/*.old

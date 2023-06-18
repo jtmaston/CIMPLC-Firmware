@@ -1,13 +1,13 @@
 <div style="text-align: justify">
 
-# CIMPLC
-The CIMPLC is a low-cost, open source high pin-count programmable logic controller, designed as a project while studying at the University of Politehnica, Bucharest. It is designed as a replacement for the aging hardware found inside the CIM ( Computer Integrated Manufacturing ) located in our faculty.
+# CIMPLC [![CMake](https://github.com/jtmaston/CIMPLC-Firmware/actions/workflows/cmake.yml/badge.svg)](https://github.com/jtmaston/CIMPLC-Firmware/actions/workflows/cmake.yml)
+The CIMPLC is a low-cost, open source high pin-count programmable logic controller, designed as a project while studying at the University of Politehnica, Bucharest. It is designed as a replacement for the aging hardware found inside the CIM ( Computer Integrated Manufacturing ) workcell located in our faculty.
 
 # The software
 The firmware is based on FreeRTOS, offering vast functionality. The stand-out feature of this design is the implementation of the concept of vPLC, or virtual PLC. It also implements a fast optimizing compiler to translate IEC 61131-3 instructions to bytecode which can be loaded faster from EEPROM.
 
 Fast, predictible code execution is the goal of every system, and the CIMPLC is no exception. The end-goal of the code is to be implemented according to the most rigorous standards. In its final version, code will be written following the MISRA standard.
-## Features
+## Features [WIP]
 
 ### WiFi programmability and monitoring
 The software allows both firmware updates over the air (OTA), as well as binary uploads for the PLC.
