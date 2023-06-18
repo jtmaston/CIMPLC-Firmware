@@ -112,3 +112,5 @@ build
 Firmware/build
 Firmware/.idea
 .vscode
+*.old
+RecoveryFirmware/*.old

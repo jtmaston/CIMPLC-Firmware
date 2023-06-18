@@ -1,3 +1,6 @@
 [submodule "Firmware/main/modules/eeprom"]
 	path = Firmware/main/modules/eeprom
 	url = https://github.com/jtmaston/AT24-ESP32.git
+[submodule "main/modules/ioctrl"]
+	path = main/modules/ioctrl
+	url = https://github.com/jtmaston/PCA9555-ESP32.git
