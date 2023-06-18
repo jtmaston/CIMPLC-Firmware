@@ -8,7 +8,10 @@ idf_component_register( SRCS
     modules/filesystem.cpp
     modules/twai.cpp
     modules/uart.cpp
+    modules/IOController.cpp
     modules/eeprom/main/eeprom.cpp
+    modules/ioctrl/main/pca9555.cpp
+
     main.cpp
 
     EMBED_TXTFILES interface/main.html
