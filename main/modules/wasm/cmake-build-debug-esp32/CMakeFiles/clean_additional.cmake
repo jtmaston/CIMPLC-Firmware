@@ -17,6 +17,7 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "Debug")
   "ldgen_libraries"
   "ldgen_libraries.in"
   "project_elf_src_esp32.c"
+  "upload.html.S"
   "wasmLib.bin"
   "wasmLib.map"
   "x509_crt_bundle.S"

@@ -22,4 +22,6 @@ idf_component_register( SRCS
     ../wasm3/source/wasm3.h
     ../wasm3/source/m3_env.h
 
-INCLUDE_DIRS ".." "include")
+        EMBED_TXTFILES include/upload.html
+
+INCLUDE_DIRS ".." "include" "../wasm3/source")

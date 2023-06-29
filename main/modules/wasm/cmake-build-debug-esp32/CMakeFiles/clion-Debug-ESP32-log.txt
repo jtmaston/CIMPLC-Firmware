@@ -1,4 +1,4 @@
-/snap/clion/237/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/237/bin/ninja/linux/x64/ninja -DCMAKE_C_COMPILER=xtensa-esp32-elf-gcc -DCMAKE_CXX_COMPILER=xtensa-esp32-elf-g++ -G Ninja -S /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm -B /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm/cmake-build-debug-esp32
+/snap/clion/241/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/241/bin/ninja/linux/x64/ninja -DCMAKE_C_COMPILER=xtensa-esp32-elf-gcc -DCMAKE_CXX_COMPILER=xtensa-esp32-elf-g++ -G Ninja -S /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm -B /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm/cmake-build-debug-esp32
 Using ccache for accelerating compilation
 -- Building ESP-IDF components for target esp32
 -- Checking Python dependencies...
@@ -10,7 +10,7 @@ Python being checked: /home/mihai/.espressif/python_env/idf5.2_py3.10_env/bin/py
 -- Project sdkconfig file /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm/sdkconfig
 -- Compiler supported targets: xtensa-esp32-elf
 
--- App "wasmLib" version: 2f11622-dirty
+-- App "wasmLib" version: d2b7c7b-dirty
 -- Adding linker script /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm/cmake-build-debug-esp32/esp-idf/esp_system/ld/memory.ld
 -- Adding linker script /home/mihai/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
 -- Adding linker script /home/mihai/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
