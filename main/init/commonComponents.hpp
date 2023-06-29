@@ -34,6 +34,9 @@ const char banner[]    = " ██████╗██╗███╗   ██�
 #include <esp_log.h>
 #include <driver/uart.h>
 #include "eeprom.hpp"
+#include <modules/IOController.hpp>
+
+#define TIME_FUNCTION(function) uint64_t start = esp_timer_get_time(); function; uint64_t end = esp_timer_get_time(); printf("%llu ms passed\n", (end - start) / 1000); fflush(stdout);
 
 struct Transport
 {
@@ -45,14 +48,19 @@ struct Transport
     FILE* stdioRedirect = stdout;
     bool debugPrintGPS = false;
     FILE* logfile;
+    #define BUILD_DEBUG             // this restricts our operations to the top 0x1000 bytes of the eeprom, to minimize wear
+                                    // further
 
-#define BUILD_DEBUG             // this restricts our operations to the top 0x1000 bytes of the eeprom, to minimize wear
-                                // further
 #ifdef BUILD_DEBUG
-    EEPROM eeprom = EEPROM(0x50, 0x0, 0x1000, 256, true);
+    //EEPROM eeprom = EEPROM(0x50, 0x0, 0x1000, 256, true);
 #else
     EEPROM eeprom = EEPROM(0x50, 0x0, 256 * 1024, 256, true);
 #endif
+
+    IOController ctrl;
+
+
+
 };
 
 
