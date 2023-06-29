@@ -10,7 +10,7 @@ Python being checked: /home/mihai/.espressif/python_env/idf5.2_py3.10_env/bin/py
 -- Project sdkconfig file /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm/sdkconfig
 -- Compiler supported targets: xtensa-esp32-elf
 
--- App "wasmLib" version: dbe8cb5-dirty
+-- App "wasmLib" version: 7479b96-dirty
 -- Adding linker script /home/mihai/CLionProjects/CIMPLC-Firmware/main/modules/wasm/cmake-build-debug-esp32/esp-idf/esp_system/ld/memory.ld
 -- Adding linker script /home/mihai/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
 -- Adding linker script /home/mihai/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld

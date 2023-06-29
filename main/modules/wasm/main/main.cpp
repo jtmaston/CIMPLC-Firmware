@@ -118,25 +118,35 @@ httpd_uri_t mainPageUriPOST = {
         .user_ctx = NULL
 };
 
-httpd_handle_t setupHTTPServer(void) {
+static httpd_handle_t start_webserver(void)
+{
+    httpd_handle_t server = NULL;
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+#if CONFIG_IDF_TARGET_LINUX
+    // Setting port as 8001 when building for Linux. Port 80 can be used only by a priviliged user in linux.
+    // So when a unpriviliged user tries to run the application, it throws bind error and the server is not started.
+    // Port 8001 can be used by an unpriviliged user as well. So the application will not throw bind error and the
+    // server will be started.
+    config.server_port = 8001;
+#endif // !CONFIG_IDF_TARGET_LINUX
+    config.lru_purge_enable = true;
 
-    config.stack_size = 3072 + 512;              // 3072: for functionality ; 4096 for packet stack and 256 for
-    httpd_handle_t server;             // verification headroom
-
-    printf("pl");
-    fflush(stdout);
-
+    // Start the httpd server
+    ESP_LOGI(TAG, "Starting server on port: '%d'", config.server_port);
     if (httpd_start(&server, &config) == ESP_OK) {
-        printf("lalal");
-        fflush(stdout);
+        // Set URI handlers
+        ESP_LOGI(TAG, "Registering URI handlers");
         httpd_register_uri_handler(server, &mainPageUri);
-        httpd_register_uri_handler(server, &mainPageUriPOST);
+//        httpd_register_uri_handler(server, &echo);
+//        httpd_register_uri_handler(server, &ctrl);
+#if CONFIG_EXAMPLE_BASIC_AUTH
+        httpd_register_basic_auth(server);
+#endif
+        return server;
     }
 
-//    ESP_ERROR_CHECK(httpd_start(&server, &config));
-    serv = server;
-    return server;
+    ESP_LOGI(TAG, "Error starting server!");
+    return NULL;
 }
 
 void app_main() {
@@ -151,7 +161,7 @@ void app_main() {
 //            NULL
 //    );
     wifiInitSoftAP();
-    setupHTTPServer();
+    start_webserver();
     printf("Done task creating");
     fflush(stdout);
 
