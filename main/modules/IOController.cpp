@@ -2,7 +2,7 @@
 // Created by Alexandru Anastasiu on 6/18/23.
 //
 
-#include "ioController.hpp"
+#include "IOController.hpp"
 
 bool IRAM_ATTR IOController::dataReadyNotifier(                 // this is an ISR to ensure that ADC data is not read
         adc_continuous_handle_t handle,                         // before it is available in the ADC

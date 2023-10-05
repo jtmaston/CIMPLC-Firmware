@@ -5,13 +5,13 @@
 #ifndef FIRMWARE_IOCONTROLLER_HPP
 #define FIRMWARE_IOCONTROLLER_HPP
 
-#include <stdio.h>
+#include <cstdio>
 #include "driver/i2c.h"
-#include "esp_log.h"
+#include <esp_log.h>
 #include <esp_adc/adc_continuous.h>
 #include <esp_adc/adc_filter.h>
 #include <soc/soc_caps.h>
-#include <pca9555.hpp>
+#include "pca9555.hpp"
 #include <cstring>
 
 typedef enum
