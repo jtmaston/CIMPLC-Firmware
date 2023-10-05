@@ -117,7 +117,7 @@ IOController::~IOController() {
 
 }
 
-void IOController::setPin(uint8_t pin, bool dir) {
+void IOController::setPin(plcPin_t pin, bool dir) {
     // wip
 }
 
@@ -129,41 +129,41 @@ void IOController::setPin(uint8_t pin, bool dir) {
 // => 2855 divisions for 2.3v
 
 
-bool IOController::digiRead(uint8_t pin) {
-    return analogValues[pin] > 2855;
+bool IOController::digiRead(plcPin_t pin) {
+    return analogValues[pin.pinNum] > 2855;
 }
 
-uint16_t IOController::anaRead(uint8_t pin) {                   // read the analog value
-    return analogValues[pin];
+uint16_t IOController::anaRead(plcPin_t pin) {                   // read the analog value
+    return analogValues[pin.pinNum];
 }
 
-float IOController::anaReadVolts(uint8_t pin, float vcc) {      // adjust for vcc
-    return (float) analogValues[pin] / 4096.0f * vcc;
+float IOController::anaReadVolts(plcPin_t pin, float vcc) {      // adjust for vcc
+    return (float) analogValues[pin.pinNum] / 4096.0f * vcc;
 }
 
 void IOController::resetPins() {
     // wip
 }
 
-void IOController::digiWrite(plc_num_t pin, bool value) {
+void IOController::digiWrite(plcPin_t pin, bool value) {
 
-    printf("%d\n", pin);
-    //printf("%d", pin / 16);
-    fflush(stdout);
-
-    switch(pin / 16)
-    {
-        case 0: {
-            bank1->setPinDir(pin, M_PCA_OUTPUT);
-            bank1->writePin(pin, value);
+    switch (pin.port) {
+        case 0:
+        {
+            bank1 ->setPinDir(pin.pinNum, M_PCA_OUTPUT);
+            bank1 ->writePin(pin.pinNum, value);
             break;
         }
-        case 1: {
-            bank2->setPinDir(pin - 16, M_PCA_OUTPUT);
-            bank2->writePin(pin - 16, value);
+        case 1:
+        {
+            bank2 ->setPinDir(pin.pinNum, M_PCA_OUTPUT);
+            bank2 ->writePin(pin.pinNum, value);
             break;
         }
+
     }
+
+
 }
 
 bool IOController::ready() {

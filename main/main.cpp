@@ -20,18 +20,58 @@ static const char* TAG = "main";
 
 #define TIME_FUNCTION(function) uint64_t start = esp_timer_get_time(); function; uint64_t end = esp_timer_get_time(); printf("%llu ms passed\n", (end - start) / 1000); fflush(stdout);
 
+plcPin_t bankTestArray[]=
+        {
+/*          PLC_O_1,
+          PLC_O_2,
+          PLC_O_3,
+          PLC_O_4,
+          PLC_O_5,
+          PLC_O_6,
+          PLC_O_7,
+          PLC_O_8,
+          PLC_O_9,
+          PLC_O_10,
+
+          PLC_IO_1,
+          PLC_IO_2,
+          PLC_O_11,
+          PLC_O_12,
+          PLC_O_13,
+          PLC_O_14,*/
+          PLC_O_15,
+          PLC_O_16,
+          PLC_O_17,
+          PLC_O_18,
+
+          PLC_IO_3,
+          PLC_IO_4,
+          PLC_IO_5,
+          PLC_IO_6,
+          PLC_IO_7,
+          PLC_IO_8,
+          PLC_IO_9,
+          PLC_IO_10,
+          PLC_IO_11,
+          PLC_IO_12
+        };
+
 void blinker(void *arg) {
 
     while(!appInterconnect.ctrl.ready()){}  // block until the remote I/O's initialize
 
-    plc_num_t pin = PLC_NUM_13;
+    plcPin_t pin = PLC_IO_12;
+
+
+
 
     while(true) {
 
-        appInterconnect.ctrl.digiWrite(pin, true);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
+        appInterconnect.ctrl.digiWrite(pin, M_PCA_HIGH);
+        //vTaskDelay(500 / portTICK_PERIOD_MS);
+
         appInterconnect.ctrl.digiWrite(pin, false);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
+        //vTaskDelay(500 / portTICK_PERIOD_MS);
     }
     vTaskDelete(nullptr);
 
